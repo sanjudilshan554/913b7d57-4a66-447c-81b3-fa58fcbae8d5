@@ -33,4 +33,4 @@ jobs:
         run: docker compose run --rm app chmod -R 777 storage bootstrap/cache
 
       - name: Run Tests
-        run: docker compose run --rm app php artisan test --env=testing
+        run: docker compose run --rm app php artisan test
