@@ -26,6 +26,7 @@ class GenerateReportCommand extends Command
      */
     public function handle(ReportGenerator $reportGenerator)
     {
+        $this->info('Student Assessment Report Generator');
         $this->info('Please enter the following');
         $this->newLine();
 
@@ -60,6 +61,5 @@ class GenerateReportCommand extends Command
                 return 1;
             }
         }
-        return 0;
     }
 }
