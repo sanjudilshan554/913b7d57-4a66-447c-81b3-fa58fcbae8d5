@@ -58,7 +58,7 @@ docker compose up -d
 
 #### Install Dependencies
 ```bash
-composer install
+composer install 
 ```
 
 #### Setup Environment
