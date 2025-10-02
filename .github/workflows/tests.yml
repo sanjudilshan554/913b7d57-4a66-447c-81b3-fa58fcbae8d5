@@ -1,0 +1,36 @@
+name: Run Tests (Docker)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Compose
+        run: docker compose version
+
+      - name: Build containers
+        run: docker compose build
+
+      - name: Install dependencies
+        run: docker compose run --rm app composer install --prefer-dist --no-progress --no-interaction
+
+      - name: Copy .env
+        run: docker compose run --rm app cp .env.example .env
+
+      - name: Generate application key
+        run: docker compose run --rm app php artisan key:generate
+
+      - name: Fix permissions
+        run: docker compose run --rm app chmod -R 777 storage bootstrap/cache
+
+      - name: Run Tests
+        run: docker compose run --rm app php artisan test
