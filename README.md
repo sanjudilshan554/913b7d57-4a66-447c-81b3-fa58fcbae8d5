@@ -1,6 +1,6 @@
 # Assessment Reporting System
 
-[![Run Tests (Docker)](https://github.com/sanjudilshan554/b63d6368-4fea-4593-9863-55bb53d7bdf0/actions/workflows/test.yml/badge.svg)](https://github.com/sanjudilshan554/b63d6368-4fea-4593-9863-55bb53d7bdf0/actions/workflows/test.yml)
+[![Run Tests (Docker)](https://github.com/sanjudilshan554/913b7d57-4a66-447c-81b3-fa58fcbae8d5/actions/workflows/test.yml/badge.svg)](https://github.com/sanjudilshan554/913b7d57-4a66-447c-81b3-fa58fcbae8d5/actions/workflows/test.yml)
 
 A Laravel-based CLI application that generates three types of reports from student assessment data: Diagnostic, Progress, and Feedback reports.
 
@@ -42,8 +42,8 @@ This system processes student assessment responses and generates insightful repo
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/sanjudilshan554/b63d6368-4fea-4593-9863-55bb53d7bdf0.git
-cd b63d6368-4fea-4593-9863-55bb53d7bdf0
+git clone https://github.com/sanjudilshan554/913b7d57-4a66-447c-81b3-fa58fcbae8d5.git
+cd 913b7d57-4a66-447c-81b3-fa58fcbae8d5
 ```
 
 ### 2. Setup with Docker (Recommended)
@@ -245,7 +245,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Support
 
 For issues and questions:
-- Create an issue in the [GitHub repository](https://github.com/sanjudilshan554/b63d6368-4fea-4593-9863-55bb53d7bdf0/issues)
+- Create an issue in the [GitHub repository](https://github.com/sanjudilshan554/913b7d57-4a66-447c-81b3-fa58fcbae8d5/issues)
 - Check existing issues for solutions
 
 ## Acknowledgments
