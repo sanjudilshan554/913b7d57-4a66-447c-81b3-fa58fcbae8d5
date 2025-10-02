@@ -1,61 +1,255 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Assessment Reporting System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Run Tests (Docker)](https://github.com/sanjudilshan554/b63d6368-4fea-4593-9863-55bb53d7bdf0/actions/workflows/test.yml/badge.svg)](https://github.com/sanjudilshan554/b63d6368-4fea-4593-9863-55bb53d7bdf0/actions/workflows/test.yml)
 
-## About Laravel
+A Laravel-based CLI application that generates three types of reports from student assessment data: Diagnostic, Progress, and Feedback reports.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This system processes student assessment responses and generates insightful reports to help students understand their performance, track progress over time, and receive targeted feedback for improvement.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Features
 
-## Learning Laravel
+### Three Report Types
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. **Diagnostic Report**: Performance breakdown by learning strand
+   - Shows total questions and correct answers per strand
+   - Calculates accuracy percentage for each strand
+   - Identifies strengths and areas for improvement
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. **Progress Report**: Improvement tracking across multiple attempts
+   - Compares performance between recent assessments
+   - Shows improvement or decline in each strand
+   - Highlights overall learning trajectory
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. **Feedback Report**: Detailed feedback on incorrect answers
+   - Provides question-specific feedback
+   - Includes hints for incorrect responses
+   - Helps students understand their mistakes
 
-## Laravel Sponsors
+## Prerequisites
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Option 1: Using Docker (Recommended)
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-### Premium Partners
+### Option 2: Local Installation
+- PHP 8.2 or higher
+- [Composer](https://getcomposer.org/)
+- Laravel 11.x
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Installation
 
-## Contributing
+### 1. Clone the Repository
+```bash
+git clone https://github.com/sanjudilshan554/b63d6368-4fea-4593-9863-55bb53d7bdf0.git
+cd b63d6368-4fea-4593-9863-55bb53d7bdf0
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2. Setup with Docker (Recommended)
 
-## Code of Conduct
+#### Build and Start the Container
+```bash
+docker compose build
+docker compose up -d
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### Install Dependencies
+```bash
+docker compose run --rm app composer install
+```
 
-## Security Vulnerabilities
+#### Setup Environment
+```bash
+docker compose run --rm app cp .env.example .env
+docker compose run --rm app php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### Fix Permissions
+```bash
+docker compose run --rm app chmod -R 777 storage bootstrap/cache
+```
+
+#### Access the Container
+```bash
+docker compose run --rm app bash
+```
+
+### 3. Setup without Docker (Local)
+
+#### Install Dependencies
+```bash
+composer install
+```
+
+#### Setup Environment
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+#### Fix Permissions
+```bash
+chmod -R 777 storage bootstrap/cache
+```
+
+## Usage
+
+### Running Reports
+
+All commands should be executed inside the Docker container or in your local environment.
+
+### Docker Commands
+
+#### Enter Container Shell
+```bash
+docker compose run --rm app bash
+```
+
+#### Run Commands Inside Container
+```bash
+docker compose run --rm app php artisan <command>
+```
+
+#### Stop Containers
+```bash
+docker compose down
+```
+
+#### View Container Logs
+```bash
+docker compose logs -f app
+```
+
+## Testing
+
+This project includes comprehensive test coverage for all report types.
+
+### Run Tests with Docker
+```bash
+docker compose run --rm app php artisan test
+```
+
+### Run Tests Locally
+```bash
+php artisan test
+```
+
+### Run Specific Test Suite
+```bash
+php artisan test --testsuite=Feature
+```
+
+### Run Tests with Coverage
+```bash
+php artisan test --coverage
+```
+
+## CI/CD
+
+This project uses GitHub Actions for continuous integration. The workflow automatically:
+
+- Builds Docker containers
+- Installs dependencies
+- Sets up the environment
+- Runs all tests
+
+The workflow is triggered on:
+- Pushes to the `main` branch
+- Pull requests to the `main` branch
+
+See [`.github/workflows/test.yml`](.github/workflows/test.yml) for configuration details.
+
+## Project Structure
+
+```
+.
+├── app/
+│   ├── Console/
+│   │   └── Commands/          # Artisan commands for reports
+│   ├── Services/              # Business logic for report generation
+│   └── Models/                # Data models
+├── tests/
+│   ├── Feature/               # Feature tests for commands
+│   └── Unit/                  # Unit tests for services
+├── storage/
+│   └── app/
+│       └── data/              # JSON data files
+├── docker-compose.yml         # Docker Compose configuration
+├── Dockerfile                 # Docker container definition
+└── .github/
+    └── workflows/
+        └── test.yml           # CI/CD workflow
+```
+
+## Data Files
+
+The system expects JSON data files in the `storage/app/data/` directory:
+
+- `questions.json` - Question definitions with strands
+- `student-responses.json` - Student assessment responses
+- `assessments.json` - Assessment metadata
+
+## Docker Configuration
+
+### Dockerfile
+- Base image: `php:8.2-cli`
+- Includes Composer
+- Installs Git and unzip for dependency management
+- Working directory: `/app`
+
+### Docker Compose
+- Service name: `app`
+- Hot reload enabled through volume mounting
+- Interactive terminal support
+- Vendor directory optimized for performance
+
+## Troubleshooting
+
+### Permission Issues
+If you encounter permission errors:
+```bash
+docker compose run --rm app chmod -R 777 storage bootstrap/cache
+```
+
+### Container Not Starting
+Check if port conflicts exist:
+```bash
+docker compose down
+docker compose up -d
+```
+
+### Composer Dependencies
+Rebuild dependencies:
+```bash
+docker compose run --rm app composer install --no-cache
+```
+
+### Clear Laravel Cache
+```bash
+docker compose run --rm app php artisan cache:clear
+docker compose run --rm app php artisan config:clear
+```
+
+## Requirements
+
+- Docker Engine 20.10+
+- Docker Compose 2.0+
+- Minimum 2GB RAM for Docker
+- 500MB disk space
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+For issues and questions:
+- Create an issue in the [GitHub repository](https://github.com/sanjudilshan554/b63d6368-4fea-4593-9863-55bb53d7bdf0/issues)
+- Check existing issues for solutions
+
+## Acknowledgments
+
+- Built with [Laravel 11](https://laravel.com)
+- Containerized with [Docker](https://www.docker.com)
+- CI/CD powered by [GitHub Actions](https://github.com/features/actions)
