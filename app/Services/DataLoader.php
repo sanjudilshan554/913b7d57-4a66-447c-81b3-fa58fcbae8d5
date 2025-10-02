@@ -8,12 +8,22 @@ class DataLoader
     private array $assessments = [];
     private array $questions = [];
     private array $responses = [];
-
+    
+    /**
+     * Method __construct
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->loadData();
     }
-
+    
+    /**
+     * Method loadData
+     *
+     * @return void
+     */
     private function loadData(): void
     {
         $dataPath = base_path('data');
@@ -38,7 +48,14 @@ class DataLoader
             true
         );
     }
-
+    
+    /**
+     * Method getStudent
+     *
+     * @param string $id [explicite description]
+     *
+     * @return array
+     */
     public function getStudent(string $id): ?array
     {
         foreach ($this->students as $student) {
@@ -48,7 +65,14 @@ class DataLoader
         }
         return null;
     }
-
+    
+    /**
+     * Method getQuestion
+     *
+     * @param string $id [explicite description]
+     *
+     * @return array
+     */
     public function getQuestion(string $id): ?array
     {
         foreach ($this->questions as $question) {
@@ -58,7 +82,14 @@ class DataLoader
         }
         return null;
     }
-
+    
+    /**
+     * Method getAssessment
+     *
+     * @param string $id [explicite description]
+     *
+     * @return array
+     */
     public function getAssessment(string $id): ?array
     {
         foreach ($this->assessments as $assessment) {
@@ -68,7 +99,14 @@ class DataLoader
         }
         return null;
     }
-
+    
+    /**
+     * Method getStudentResponses
+     *
+     * @param string $studentId [explicite description]
+     *
+     * @return array
+     */
     public function getStudentResponses(string $studentId): array
     {
         $filtered = [];
@@ -83,7 +121,12 @@ class DataLoader
         
         return $filtered;
     }
-
+    
+    /**
+     * Method getAllQuestions
+     *
+     * @return array
+     */
     public function getAllQuestions(): array
     {
         return $this->questions;

@@ -7,11 +7,24 @@ use App\Services\Reports\ProgressReport;
 use App\Services\Reports\FeedbackReport;
 
 class ReportGenerator
-{
+{    
+    /**
+     * Method __construct
+     *
+     * @return void
+     */
     public function __construct(
         private DataLoader $dataLoader
     ) {}
-
+    
+    /**
+     * Method generate
+     *
+     * @param string $studentId [explicite description]
+     * @param string $type [explicite description]
+     *
+     * @return string
+     */
     public function generate(string $studentId, string $type): string
     {
         $report = match($type) {

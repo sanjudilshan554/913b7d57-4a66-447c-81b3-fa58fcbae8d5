@@ -6,11 +6,23 @@ use App\Contracts\ReportInterface;
 use App\Services\DataLoader;
 
 class FeedbackReport implements ReportInterface
-{
+{    
+    /**
+     * Method __construct
+     *
+     * @return void
+     */
     public function __construct(
         private DataLoader $dataLoader
     ) {}
-
+    
+    /**
+     * Method generate
+     *
+     * @param string $studentId [explicite description]
+     *
+     * @return string
+     */
     public function generate(string $studentId): string
     {
         $student = $this->dataLoader->getStudent($studentId);
