@@ -1,7 +1,5 @@
 # Assessment Reporting System
 
-[![Run Tests (Docker)](https://github.com/sanjudilshan554/913b7d57-4a66-447c-81b3-fa58fcbae8d5/actions/workflows/test.yml/badge.svg)](https://github.com/sanjudilshan554/913b7d57-4a66-447c-81b3-fa58fcbae8d5/actions/workflows/test.yml)
-
 A Laravel-based CLI application that generates three types of reports from student assessment data: Diagnostic, Progress, and Feedback reports.
 
 ## Overview
@@ -13,19 +11,21 @@ This system processes student assessment responses and generates insightful repo
 ### Three Report Types
 
 1. **Diagnostic Report**: Performance breakdown by learning strand
-   - Shows total questions and correct answers per strand
-   - Calculates accuracy percentage for each strand
-   - Identifies strengths and areas for improvement
+   - Shows student name, assessment type, and completion date/time
+   - Displays total questions and correct answers per strand
+   - Provides detailed breakdown by learning strands 
 
 2. **Progress Report**: Improvement tracking across multiple attempts
-   - Compares performance between recent assessments
-   - Shows improvement or decline in each strand
-   - Highlights overall learning trajectory
+   - Shows all assessment completion dates with raw scores
+   - Displays total number of attempts
+   - Calculates improvement between oldest and most recent assessments
+   - Tracks overall score progression over time
 
 3. **Feedback Report**: Detailed feedback on incorrect answers
-   - Provides question-specific feedback
-   - Includes hints for incorrect responses
-   - Helps students understand their mistakes
+   - Lists all incorrectly answered questions
+   - Shows the student's selected answer vs. the correct answer
+   - Provides targeted hints to help understand mistakes
+   - Includes question text and answer options for context
 
 ## Prerequisites
 
@@ -52,27 +52,6 @@ cd 913b7d57-4a66-447c-81b3-fa58fcbae8d5
 ```bash
 docker compose build
 docker compose up -d
-```
-
-#### Install Dependencies
-```bash
-docker compose run --rm app composer install
-```
-
-#### Setup Environment
-```bash
-docker compose run --rm app cp .env.example .env
-docker compose run --rm app php artisan key:generate
-```
-
-#### Fix Permissions
-```bash
-docker compose run --rm app chmod -R 777 storage bootstrap/cache
-```
-
-#### Access the Container
-```bash
-docker compose run --rm app bash
 ```
 
 ### 3. Setup without Docker (Local)
@@ -138,11 +117,6 @@ php artisan test
 ### Run Specific Test Suite
 ```bash
 php artisan test --testsuite=Feature
-```
-
-### Run Tests with Coverage
-```bash
-php artisan test --coverage
 ```
 
 ## CI/CD
